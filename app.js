@@ -13,6 +13,13 @@ app.get("/employees", (request, response) => {
     response.status(200).json(employees);
 });
 
+// GET /employees/random
+app.get("/employees/random", (request, response) => {
+    const randomIndex = Math.floor(Math.random() * employees.length);
+    const randomEmployee = employees[randomIndex];
+    response.status(200).json(randomEmployee);
+});
+
 // GET /employees/:id
 app.get("/employees/:id", (request, response) => {
     const employeeId = Number(request.params.id);
@@ -23,5 +30,7 @@ app.get("/employees/:id", (request, response) => {
     }
     response.status(200).json(foundEmployee);
 });
+
+
 
 export default app;
